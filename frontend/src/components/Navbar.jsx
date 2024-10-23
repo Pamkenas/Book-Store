@@ -1,8 +1,13 @@
 import { Link } from "react-router-dom";
+
 import { HiMiniBars3BottomLeft } from "react-icons/hi2";
 import { IoSearch } from "react-icons/io5";
+import { LuUser2 } from "react-icons/lu";
+import { HiOutlineHeart } from "react-icons/hi";
+import { HiOutlineShoppingCart } from "react-icons/hi";
 
 const Navbar = () => {
+  const currentUser = false;
   return (
     <header className="max-w-screen-2xl mx-auto px-4 py-6">
       <nav className="flex justify-between items-center">
@@ -24,7 +29,32 @@ const Navbar = () => {
         </div>
 
         {/* right side */}
-        <div>Nav Items</div>
+        <div className="relative flex items-center md:space-x-3 space-x-2">
+          <div>
+            {currentUser ? (
+              <>
+                <button>
+                  <img src="" alt=""/>
+                </button>
+              </>
+            ) : (
+              <Link to="/login">
+                <LuUser2 className="size-6" />
+              </Link>
+            )}
+          </div>
+          <button className="hidden sm:block">
+            <HiOutlineHeart className="size-6" />
+          </button>
+
+          <Link
+            to="/cart"
+            className="bg-primary p-1 sm:px-6 px-2 flex items-center rounded-sm"
+          >
+            <HiOutlineShoppingCart className="size-5" />
+            <span className="text-sm font-semibold sm:ml-1">0</span>
+          </Link>
+        </div>
       </nav>
     </header>
   );
