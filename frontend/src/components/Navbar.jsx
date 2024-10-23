@@ -6,8 +6,21 @@ import { LuUser2 } from "react-icons/lu";
 import { HiOutlineHeart } from "react-icons/hi";
 import { HiOutlineShoppingCart } from "react-icons/hi";
 
+import avatarImg from "../assets/avatar.png";
+import { useState } from "react";
+
+const navigation = [
+  { name: "Dashboard", href: "/dashboard" },
+  { name: "Orders", href: "/order" },
+  { name: "Cart Page", href: "/cart" },
+  { name: "Check Out", href: "/checkout" },
+];
+
 const Navbar = () => {
-  const currentUser = false;
+
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+
+  const currentUser = true;
   return (
     <header className="max-w-screen-2xl mx-auto px-4 py-6">
       <nav className="flex justify-between items-center">
@@ -33,9 +46,28 @@ const Navbar = () => {
           <div>
             {currentUser ? (
               <>
-                <button>
-                  <img src="" alt="" />
+                <button onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
+                  <img
+                    src={avatarImg}
+                    alt="UserImage"
+                    className={`size-7 rounded-full $ {currentUser ? 'ring-2 ring-blue-500' : ''}`}
+                  />
                 </button>
+                {/* Show dropdown */}
+                { 
+                isDropdownOpen && (
+                  <div>
+                    <ul>
+                      { navigation.map((item) => (
+                        <li key={item.name}>
+                          <Link to={item.href}>
+                            {item.name}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </>
             ) : (
               <Link to="/login">
