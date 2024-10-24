@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 import { HiMiniBars3BottomLeft } from "react-icons/hi2";
 import { IoSearch } from "react-icons/io5";
 import { LuUser2 } from "react-icons/lu";
-import { HiOutlineHeart } from "react-icons/hi";
-import { HiOutlineShoppingCart } from "react-icons/hi";
+import { HiOutlineShoppingCart, HiOutlineHeart } from "react-icons/hi";
 
 import avatarImg from "../assets/avatar.png";
 import { useState } from "react";
@@ -17,8 +16,7 @@ const navigation = [
 ];
 
 const Navbar = () => {
-
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const currentUser = true;
   return (
@@ -54,13 +52,18 @@ const Navbar = () => {
                   />
                 </button>
                 {/* Show dropdown */}
-                { 
-                isDropdownOpen && (
+                {isDropdownOpen && (
                   <div className="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-md z-40">
                     <ul className="py-2">
-                      { navigation.map((item) => (
-                        <li key={item.name} onClick={() => setIsDropdownOpen(false)}>
-                          <Link to={item.href} className="block px-4 py-2 text-sm hover:bg-gray-100">
+                      {navigation.map((item) => (
+                        <li
+                          key={item.name}
+                          onClick={() => setIsDropdownOpen(false)}
+                        >
+                          <Link
+                            to={item.href}
+                            className="block px-4 py-2 text-sm hover:bg-gray-100"
+                          >
                             {item.name}
                           </Link>
                         </li>
