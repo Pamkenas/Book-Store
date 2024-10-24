@@ -6,10 +6,15 @@ const TopSellers = () => {
   useEffect(() => {
     fetch("books.json")
       .then(res => res.json())
-      .then((data) => console.log(data));
-  }, []);
+      .then((data) => setBooks(data))
+  } , [])
 
-  return <div>TopSellers</div>;
-};
+  return (
+    <div className="py-10">
+      <h2 className="text-3xl font-semibold mb-6">Top Sellers</h2>
+      {/* category filtering */}
+    </div>
+  )
+}
 
 export default TopSellers;
