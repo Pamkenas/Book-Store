@@ -28,7 +28,7 @@ const TopSellers = () => {
           className="border bg-[#EAEAEA] border-gray-300 rounded-md px-4 py-2 focus:outline-none"
         >
           {categories.map((category, index) => (
-            <option key={index} value={category}>s
+            <option key={index} value={category}>
               {category}
             </option>
           ))}
