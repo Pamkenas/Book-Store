@@ -12,16 +12,20 @@ const TopSellers = () => {
   const [books, setBooks] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("Choose genre");
 
-
   useEffect(() => {
     fetch("books.json")
       .then((res) => res.json())
       .then((data) => setBooks(data));
   }, []);
 
-  const filteredBooks = selectedCategory === "Choose genre" ? books: books.filter(books => books.category === selectedCategory.toLowerCase()) 
+  const filteredBooks =
+    selectedCategory === "Choose genre"
+      ? books
+      : books.filter(
+          (books) => books.category === selectedCategory.toLowerCase()
+        );
 
-  console.log(filteredBooks)
+  console.log(filteredBooks);
 
   return (
     <div className="py-10">
@@ -29,8 +33,7 @@ const TopSellers = () => {
       {/* category filtering */}
       <div className="mb-8 flex items-center">
         <select
-        onChange={(e) => setSelectedCategory(e.target.value)}
-
+          onChange={(e) => setSelectedCategory(e.target.value)}
           name="category"
           id="category"
           className="border bg-[#EAEAEA] border-gray-300 rounded-md px-4 py-2 focus:outline-none"
@@ -43,15 +46,11 @@ const TopSellers = () => {
         </select>
       </div>
 
-          {
-            filteredBooks.map((book, index) => (
-              <div>{book.title}</div>
-          ))
-          }
-
+      {filteredBooks.map((book, index) => (
+        <div>{book.title}</div>
+      ))}
     </div>
   );
 };
 
 export default TopSellers;
-
